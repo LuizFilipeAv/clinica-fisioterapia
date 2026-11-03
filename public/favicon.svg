@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Deep blue disc, the arch from the hero and the gold orbit with its bead -->
+  <circle cx="32" cy="32" r="32" fill="#12344a"/>
+  <path d="M23 45V31a9 9 0 0 1 18 0v14z" fill="#bfddf0"/>
+  <circle cx="32" cy="32" r="21" fill="none" stroke="#c9a24b" stroke-width="3.5"/>
+  <circle cx="11" cy="32" r="5" fill="#c9a24b"/>
+</svg>
