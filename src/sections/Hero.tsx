@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { gsap, useGSAP, EASE, DUR, LETTER_STAGGER } from '../lib/motion'
 import { scrollToTarget } from '../lib/smoothScroll'
+import { chromeOffset } from '../lib/layout'
 import { clinic, heroContent } from '../data/content'
 import { SectionLabel } from '../components/SectionLabel'
 import { SplitText } from '../components/SplitText'
@@ -35,8 +36,23 @@ export function Hero({ ready }: { ready: boolean }) {
     () => {
       const mm = gsap.matchMedia()
       mm.add('(prefers-reduced-motion: no-preference)', () => {
-        const stage = { trigger: '.hero__stage', start: 'top top', end: 'bottom top', scrub: 0.6 }
-        gsap.to('.hero__headline', { xPercent: -28, ease: 'none', scrollTrigger: stage })
+        // Range starts at scroll 0 (the stage sits under the chrome) and ends as the stage leaves.
+        const stage = {
+          trigger: '.hero__stage',
+          start: () => `top ${chromeOffset()}px`,
+          end: 'bottom top',
+          invalidateOnRefresh: true,
+        }
+        const headline = ref.current!.querySelector<HTMLElement>('.hero__headline')!
+        const stageEl = ref.current!.querySelector<HTMLElement>('.hero__stage')!
+
+        // The whole phrase travels across the photo: its last letter reaches the right edge
+        // while the line is still on screen, not after it has scrolled away.
+        gsap.to(headline, {
+          x: () => -(headline.scrollWidth - stageEl.clientWidth),
+          ease: 'none',
+          scrollTrigger: { ...stage, end: 'bottom 45%', scrub: 0.5 },
+        })
         gsap.to('.hero__media img', { yPercent: 14, ease: 'none', scrollTrigger: { ...stage, scrub: true } })
 
         // Lead paragraph lights up word by word as it crosses the viewport.

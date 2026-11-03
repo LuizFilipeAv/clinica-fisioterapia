@@ -26,6 +26,7 @@
 }
 
 .contact__info {
+  background: var(--blue-soft);
   display: grid;
   grid-template-columns: 1fr;
 }

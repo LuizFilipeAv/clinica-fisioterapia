@@ -7,7 +7,7 @@
   align-items: center;
   height: var(--label-h);
   padding: 0 var(--gutter);
-  background: var(--white);
+  background: var(--blue-soft);
   border-top: 1px solid var(--ink);
   border-bottom: 1px solid var(--ink);
   font-size: 0.8rem;

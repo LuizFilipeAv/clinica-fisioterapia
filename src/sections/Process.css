@@ -26,7 +26,7 @@
 /* Stage: default is a static list; .is-animated turns it into the pinned circle. */
 .process__stage {
   position: relative;
-  background: var(--blue-soft);
+  background: var(--blue);
   overflow: hidden;
   padding: clamp(40px, 8vh, 96px) var(--gutter);
 }
@@ -87,7 +87,7 @@
   white-space: nowrap;
   font-size: clamp(6rem, 20vw, 18rem);
   line-height: 1;
-  color: var(--blue);
+  color: var(--white);
   will-change: transform;
 }
 

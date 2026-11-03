@@ -50,7 +50,7 @@
 }
 
 .gallery__marquee {
-  background: var(--ink);
+  background: var(--blue-ink);
   color: var(--white);
   padding: 0.1em 0 0.15em;
   border-top: 1px solid var(--ink);

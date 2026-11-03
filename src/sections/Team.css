@@ -30,6 +30,7 @@
 }
 
 .team__card {
+  background: var(--blue-soft);
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -43,7 +44,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--blue-soft);
+  background: var(--blue);
   transform: scaleY(0);
   transform-origin: bottom;
   transition: transform var(--dur-slow) var(--ease-out);

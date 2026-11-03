@@ -45,18 +45,27 @@
   color: var(--blue-ink);
 }
 
+/* Soft shade under the giant white line so it reads over the pale floor */
+.hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(to bottom, rgb(30 42 51 / 0), rgb(30 42 51 / 0.38));
+  pointer-events: none;
+}
+
 .hero__headline-wrap {
   position: absolute;
   left: 0;
-  bottom: -0.12em;
+  bottom: 4%;
   pointer-events: none;
-  font-size: clamp(5.5rem, 16vw, 15rem);
+  font-size: clamp(6rem, 21vw, 20rem);
 }
 .hero__headline {
   display: block;
   white-space: nowrap;
-  color: var(--ink);
-  padding-left: var(--gutter);
+  color: var(--white);
+  padding: 0 var(--gutter);
   line-height: 0.95;
   will-change: transform;
 }
@@ -66,6 +75,7 @@
 
 /* Intro grid under the photo */
 .hero__intro {
+  background: var(--blue-soft);
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   border-top: 1px solid var(--ink);
