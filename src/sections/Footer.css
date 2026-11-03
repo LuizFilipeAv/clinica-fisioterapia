@@ -1,0 +1,25 @@
+.footer {
+  background: var(--gold);
+  color: var(--ink);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 24px var(--gutter);
+  font-size: 0.85rem;
+}
+.footer__name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.footer__top {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  font-size: 0.85rem;
+  transition: text-underline-offset var(--dur-standard) var(--ease-out);
+}
+.footer__top:hover {
+  text-underline-offset: 0.5em;
+}

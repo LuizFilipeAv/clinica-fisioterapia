@@ -1,0 +1,118 @@
+.specialties__pin {
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+.specialties__head {
+  padding: clamp(40px, 7vh, 88px) var(--gutter) clamp(24px, 4vh, 48px);
+}
+.specialties__title {
+  font-size: clamp(2.6rem, 11vw, 10rem);
+  color: var(--gold-ink);
+}
+.specialties__sub {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.specialties__track {
+  list-style: none;
+  display: flex;
+  overflow: hidden;
+  border-top: 1px solid var(--ink);
+}
+
+.specialty {
+  flex: 0 0 clamp(260px, 25vw, 360px);
+  overflow: hidden;
+  border-right: 1px solid var(--ink);
+  will-change: transform;
+}
+.specialty__inner {
+  position: relative;
+  height: clamp(300px, 44vh, 440px);
+  display: flex;
+  flex-direction: column;
+  padding: 18px 20px 24px;
+  isolation: isolate;
+}
+.specialty__inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--blue-soft);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.specialty:hover .specialty__inner::before {
+  transform: scaleY(1);
+}
+
+.specialty__num {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+.specialty__num::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  transition: transform var(--dur-standard) var(--ease-out);
+}
+.specialty:hover .specialty__num::before {
+  transform: scale(1.6);
+}
+.specialty__title {
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 2.4vw, 2.5rem);
+  line-height: 1;
+  color: var(--gold-ink);
+  transition: transform var(--dur-standard) var(--ease-out);
+}
+.specialty:hover .specialty__title {
+  transform: translateX(6px);
+}
+.specialty__text {
+  margin-top: auto;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  max-width: 28ch;
+}
+
+/* Tablet and phone: no pin, cards wrap into a grid */
+@media (max-width: 899px) {
+  .specialties__track {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .specialty {
+    border-bottom: 1px solid var(--ink);
+  }
+  .specialty:nth-child(2n) {
+    border-right: 0;
+  }
+  .specialty__inner {
+    height: auto;
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 479px) {
+  .specialties__track {
+    grid-template-columns: 1fr;
+  }
+  .specialty {
+    border-right: 0;
+  }
+  .specialty__inner {
+    min-height: 180px;
+  }
+}

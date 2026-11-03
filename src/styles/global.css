@@ -1,0 +1,193 @@
+:root {
+  /* Palette: gold, light blue, white */
+  --gold: #c9a24b;
+  --gold-soft: #e9d6a6;
+  --gold-ink: #85651c; /* gold for text on white, 5.2:1 */
+  --blue: #bfddf0;
+  --blue-soft: #e8f3fa;
+  --blue-ink: #2b5874; /* text on light blue, 6.1:1 */
+  --white: #ffffff;
+  --ink: #1e2a33;
+  --ink-soft: #4b5a66;
+  --line: #d9e3ea;
+
+  --font-display: 'Instrument Serif', 'Times New Roman', serif;
+  --font-body: 'Inter Tight', system-ui, sans-serif;
+
+  --rail-w: 72px;
+  --bar-h: 56px;
+  --label-h: 40px;
+  --gutter: clamp(16px, 3vw, 40px);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* expo out, signature curve */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-quick: 180ms;
+  --dur-standard: 450ms;
+  --dur-slow: 900ms;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--gold-soft);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-ink);
+  outline-offset: 3px;
+}
+
+html {
+  scrollbar-color: var(--gold) var(--blue-soft);
+  scrollbar-width: thin;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Layout shell: content sits right of the fixed rail and below the top bar */
+.page {
+  padding-left: var(--rail-w);
+  padding-top: var(--bar-h);
+}
+
+.section {
+  position: relative;
+  border-bottom: 1px solid var(--ink);
+}
+
+/* Display type */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+/* Split text: each letter rides inside a clipped word */
+.split-word {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: top;
+  /* Room for accents (Á, ê) and descenders inside the mask */
+  padding: 0.14em 0 0.08em;
+  margin: -0.14em 0 -0.08em;
+}
+.split-letter {
+  display: inline-block;
+  will-change: transform;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.85em 1.4em;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color var(--dur-standard) var(--ease-out);
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--gold);
+  transform: translateY(101%);
+  transition: transform var(--dur-standard) var(--ease-out);
+}
+.btn:hover {
+  color: var(--ink);
+}
+.btn:hover::before {
+  transform: translateY(0);
+}
+
+@media (max-width: 767px) {
+  :root {
+    --rail-w: 0px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

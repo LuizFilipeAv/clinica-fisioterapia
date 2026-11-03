@@ -1,0 +1,12 @@
+.reveal-image {
+  position: relative;
+  overflow: hidden;
+  background: var(--blue-soft);
+}
+
+.reveal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}

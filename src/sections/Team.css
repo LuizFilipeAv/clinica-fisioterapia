@@ -1,0 +1,121 @@
+.team__head {
+  display: grid;
+  gap: 24px;
+  padding: clamp(48px, 8vw, 120px) var(--gutter) clamp(32px, 5vw, 72px);
+}
+.team__title {
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  color: var(--gold-ink);
+}
+.team__aside {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+}
+.team__count {
+  font-size: clamp(3.5rem, 8vw, 7rem);
+}
+.team__intro {
+  max-width: 24ch;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  padding-bottom: 0.6em;
+}
+
+.team__grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--ink);
+}
+
+.team__card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-bottom: 1px solid var(--ink);
+}
+.team__card:last-child {
+  border-bottom: 0;
+}
+.team__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--blue-soft);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.team__card:hover::before {
+  transform: scaleY(1);
+}
+
+.team__photo {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-bottom: 1px solid var(--ink);
+  background: var(--blue-soft);
+}
+.team__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.team__card:hover .team__photo img {
+  transform: scale(1.05);
+}
+
+.team__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: clamp(20px, 2.5vw, 36px) var(--gutter) clamp(24px, 3vw, 40px);
+}
+.team__focus {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+.team__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.team__name {
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-top: 8px;
+}
+.team__role {
+  font-size: 0.9rem;
+}
+.team__cred {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+.team__btn {
+  margin-top: 16px;
+}
+
+@media (min-width: 900px) {
+  .team__head {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+  .team__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .team__card:nth-child(odd) {
+    border-right: 1px solid var(--ink);
+  }
+  .team__card:nth-last-child(2):nth-child(odd) {
+    border-bottom: 0;
+  }
+}

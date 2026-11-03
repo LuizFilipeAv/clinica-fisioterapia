@@ -1,0 +1,209 @@
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.logo__accent {
+  color: var(--gold-ink);
+  font-style: italic;
+}
+
+/* Left rail */
+.rail {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 60;
+  width: var(--rail-w);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--white);
+  border-right: 1px solid var(--ink);
+}
+.rail__logo {
+  padding: 18px 0;
+  text-decoration: none;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.rail__menu {
+  margin-block: auto;
+}
+
+/* Top bar */
+.bar {
+  position: fixed;
+  top: 0;
+  left: var(--rail-w);
+  right: 0;
+  z-index: 50;
+  height: var(--bar-h);
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 4vw, 64px);
+  padding: 0 var(--gutter);
+  background: var(--white);
+  border-bottom: 1px solid var(--ink);
+  font-size: 0.85rem;
+}
+.bar__tagline {
+  margin-right: auto;
+}
+.bar__link {
+  text-decoration: none;
+  background: linear-gradient(var(--gold), var(--gold)) 0 100% / 0 1px no-repeat;
+  transition: background-size var(--dur-standard) var(--ease-out);
+}
+.bar__link:hover {
+  background-size: 100% 1px;
+}
+.bar .bar__logo,
+.bar .bar__menu {
+  display: none;
+}
+
+/* Menu button: three lines that fold into an X */
+.menu-button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-content: center;
+  gap: 5px;
+}
+.menu-button span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink);
+  transition:
+    transform var(--dur-standard) var(--ease-out),
+    opacity var(--dur-quick) linear,
+    width var(--dur-standard) var(--ease-out);
+}
+.menu-button:hover span:nth-child(2) {
+  width: 14px;
+}
+.menu-button.is-open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.menu-button.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.menu-button.is-open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Drawer */
+.menu {
+  position: fixed;
+  inset: 0 0 0 var(--rail-w);
+  z-index: 55;
+  visibility: hidden;
+}
+.menu__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgb(30 42 51 / 0.35);
+}
+.menu__panel {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: min(520px, 100%);
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-right: 1px solid var(--ink);
+}
+.menu__list {
+  list-style: none;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.menu__row {
+  flex: 1;
+  border-bottom: 1px solid var(--ink);
+  overflow: hidden;
+}
+.menu__item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 var(--gutter);
+  text-decoration: none;
+  isolation: isolate;
+  transition: color var(--dur-standard) var(--ease-out);
+}
+.menu__item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--gold-soft);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--dur-standard) var(--ease-out);
+}
+.menu__item:hover::before {
+  transform: scaleY(1);
+}
+.menu__item.is-active {
+  background: var(--ink);
+  color: var(--white);
+}
+.menu__item.is-active .menu__num {
+  color: var(--gold);
+}
+.menu__num {
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  align-self: flex-start;
+  padding-top: 1.1rem;
+}
+.menu__label {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vh, 2.75rem);
+  line-height: 1;
+  transition: transform var(--dur-standard) var(--ease-out);
+}
+.menu__item:hover .menu__label {
+  transform: translateX(8px);
+}
+.menu__foot {
+  padding: 20px var(--gutter);
+}
+
+@media (max-width: 767px) {
+  .rail {
+    display: none;
+  }
+  .bar {
+    left: 0;
+  }
+  .bar .bar__logo,
+  .bar .bar__menu {
+    display: grid;
+  }
+  .bar__logo {
+    margin-right: auto;
+    text-decoration: none;
+  }
+  .bar__menu {
+    margin-right: -10px;
+  }
+  .bar__tagline,
+  .bar__link--email {
+    display: none;
+  }
+  .menu {
+    top: var(--bar-h);
+  }
+  .menu__panel {
+    width: 100%;
+  }
+}

@@ -1,0 +1,15 @@
+.marquee {
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  font-size: clamp(5rem, 17vw, 16rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  will-change: transform;
+}
