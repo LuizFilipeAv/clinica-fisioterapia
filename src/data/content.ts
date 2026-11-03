@@ -44,6 +44,8 @@ export const heroContent = {
   image: hero,
   imageAlt: 'Fisioterapeuta orientando um paciente em um alongamento lateral sobre o tapete',
   title: 'Saúde em boas mãos',
+  heading: 'Fisioterapia que devolve o seu',
+  headingAccent: 'movimento',
   lead: 'Avaliação cuidadosa e um plano feito para o seu corpo. Tratamos a causa da dor, não só o sintoma, para você voltar a se mover com confiança.',
   pillars: [
     {
