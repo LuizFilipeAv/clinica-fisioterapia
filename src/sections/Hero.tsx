@@ -1,9 +1,7 @@
 import { useRef } from 'react'
 import { gsap, useGSAP, EASE, DUR, LETTER_STAGGER } from '../lib/motion'
 import { scrollToTarget } from '../lib/smoothScroll'
-import { chromeOffset } from '../lib/layout'
 import { clinic, heroContent } from '../data/content'
-import { SectionLabel } from '../components/SectionLabel'
 import { SplitText } from '../components/SplitText'
 import './Hero.css'
 
@@ -39,7 +37,7 @@ export function Hero({ ready }: { ready: boolean }) {
         // Range starts at scroll 0 (the stage sits under the chrome) and ends as the stage leaves.
         const stage = {
           trigger: '.hero__stage',
-          start: () => `top ${chromeOffset()}px`,
+          start: 'top top',
           end: 'bottom top',
           invalidateOnRefresh: true,
         }
@@ -73,8 +71,6 @@ export function Hero({ ready }: { ready: boolean }) {
 
   return (
     <section ref={ref} id="inicio" className="section hero">
-      <SectionLabel id="inicio" />
-
       <div className="hero__stage">
         <div className="hero__media">
           <img src={heroContent.image} alt={heroContent.imageAlt} fetchPriority="high" />

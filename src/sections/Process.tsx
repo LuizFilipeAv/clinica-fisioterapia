@@ -1,8 +1,6 @@
 import { useRef } from 'react'
 import { gsap, useGSAP } from '../lib/motion'
-import { chromeOffset } from '../lib/layout'
 import { process } from '../data/content'
-import { SectionLabel } from '../components/SectionLabel'
 import { RevealHeading } from '../components/RevealHeading'
 import { RevealImage } from '../components/RevealImage'
 import './Process.css'
@@ -30,7 +28,7 @@ export function Process() {
           defaults: { ease: 'power2.inOut' },
           scrollTrigger: {
             trigger: '.process__stage',
-            start: () => `top ${chromeOffset()}px`,
+            start: 'top top',
             end: '+=320%',
             pin: true,
             scrub: 0.8,
@@ -59,8 +57,6 @@ export function Process() {
 
   return (
     <section ref={ref} id="como-funciona" className="section process">
-      <SectionLabel id="como-funciona" />
-
       <header className="process__head">
         <div className="process__copy">
           <RevealHeading text={process.title} className="process__title display" />

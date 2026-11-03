@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { gsap, useGSAP, EASE } from '../lib/motion'
-import { SectionLabel } from '../components/SectionLabel'
 import { RevealHeading } from '../components/RevealHeading'
 import { team } from '../data/content'
 import './Team.css'
@@ -29,7 +28,6 @@ export function Team() {
 
   return (
     <section ref={ref} id="equipe" className="section team">
-      <SectionLabel id="equipe" />
       <div className="team__head">
         <RevealHeading text={team.title} className="team__title display" />
         <div className="team__aside">

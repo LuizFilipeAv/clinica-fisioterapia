@@ -1,4 +1,3 @@
-import { SectionLabel } from '../components/SectionLabel'
 import { RevealHeading } from '../components/RevealHeading'
 import { RevealImage } from '../components/RevealImage'
 import { Marquee } from '../components/Marquee'
@@ -8,7 +7,6 @@ import './Contact.css'
 export function Contact() {
   return (
     <section id="contato" className="section contact">
-      <SectionLabel id="contato" />
       <div className="contact__head">
         <RevealHeading text={contact.title} className="contact__title display" />
       </div>

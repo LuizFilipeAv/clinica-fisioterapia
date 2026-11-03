@@ -1,4 +1,3 @@
-import { SectionLabel } from '../components/SectionLabel'
 import { RevealHeading } from '../components/RevealHeading'
 import { RevealImage } from '../components/RevealImage'
 import { Marquee } from '../components/Marquee'
@@ -8,7 +7,6 @@ import './Gallery.css'
 export function Gallery() {
   return (
     <section id="clinica" className="section gallery">
-      <SectionLabel id="clinica" />
       <div className="gallery__body">
         <RevealHeading text={gallery.title} className="gallery__title display" />
         <div className="gallery__grid">

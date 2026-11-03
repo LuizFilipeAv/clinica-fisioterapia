@@ -22,9 +22,7 @@ export function initSmoothScroll() {
 
 export function scrollToTarget(target: string | HTMLElement) {
   if (lenis) {
-    // Land the section just under the fixed top bar.
-    const offset = -parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar-h'))
-    lenis.scrollTo(target, { offset, duration: 1.4, easing: (t) => 1 - Math.pow(1 - t, 4) })
+    lenis.scrollTo(target, { duration: 1.4, easing: (t) => 1 - Math.pow(1 - t, 4) })
     return
   }
   const el = typeof target === 'string' ? document.querySelector(target) : target

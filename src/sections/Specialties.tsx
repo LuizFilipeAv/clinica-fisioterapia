@@ -1,8 +1,6 @@
 import { useRef } from 'react'
 import { gsap, useGSAP, EASE, DUR } from '../lib/motion'
-import { chromeOffset } from '../lib/layout'
 import { specialties } from '../data/content'
-import { SectionLabel } from '../components/SectionLabel'
 import { RevealHeading } from '../components/RevealHeading'
 import './Specialties.css'
 
@@ -34,7 +32,7 @@ export function Specialties() {
           ease: 'none',
           scrollTrigger: {
             trigger: '.specialties__pin',
-            start: () => `top ${chromeOffset()}px`,
+            start: 'top top',
             end: () => `+=${distance()}`,
             pin: true,
             scrub: 0.8,
@@ -48,8 +46,6 @@ export function Specialties() {
 
   return (
     <section ref={ref} id="especialidades" className="section specialties">
-      <SectionLabel id="especialidades" />
-
       <div className="specialties__pin">
         <header className="specialties__head">
           <RevealHeading text="Especialidades," className="specialties__title display" />
