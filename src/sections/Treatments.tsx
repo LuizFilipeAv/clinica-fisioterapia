@@ -14,18 +14,33 @@ export function Treatments() {
         const items = gsap.utils.toArray<HTMLElement>('.treatment')
         const cards = gsap.utils.toArray<HTMLElement>('.treatment__card')
 
+        const stickyTop = (el: HTMLElement) => parseFloat(getComputedStyle(el).top)
+
         // Cards are sticky; as the next one slides over, the one beneath sinks back and tilts.
+        // The effect runs only while they overlap: from the moment the next card's top touches
+        // this card's bottom edge until the next card settles into its own sticky spot.
         cards.forEach((card, i) => {
           const next = items[i + 1]
           if (!next) return
           const depth = cards.length - 1 - i
-          gsap.to(card, {
-            scale: 1 - depth * 0.04,
-            rotate: i % 2 ? 1.5 : -1.5,
-            filter: 'brightness(0.88)',
-            ease: 'none',
-            scrollTrigger: { trigger: next, start: 'top bottom', end: 'top 30%', scrub: true },
-          })
+          gsap.fromTo(
+            card,
+            // Explicit start values: tweening from filter "none" makes GSAP start at brightness(0).
+            { scale: 1, rotate: 0, filter: 'brightness(1)' },
+            {
+              scale: 1 - depth * 0.04,
+              rotate: i % 2 ? 1.5 : -1.5,
+              filter: 'brightness(0.88)',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: next,
+                start: () => `top ${stickyTop(items[i]) + card.offsetHeight}px`,
+                end: () => `top ${stickyTop(next)}px`,
+                scrub: true,
+                invalidateOnRefresh: true,
+              },
+            },
+          )
         })
 
         // Each photo drifts inside its frame.
