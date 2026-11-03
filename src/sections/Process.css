@@ -1,32 +1,44 @@
+.process {
+  background: var(--blue-200);
+  overflow: clip;
+  padding-bottom: var(--r-lg);
+}
+
 .process__head {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid var(--ink);
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: clamp(32px, 5vw, 80px);
+  padding: 0 var(--gutter);
 }
 .process__copy {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
-  padding: clamp(40px, 7vh, 88px) var(--gutter);
+  padding: clamp(40px, 7vh, 88px) 0;
 }
 .process__title {
-  font-size: clamp(3.5rem, 9vw, 8.5rem);
+  font-size: clamp(3rem, 8vw, 7.5rem);
+  color: var(--blue-900);
 }
 .process__intro {
   max-width: 34ch;
   font-size: 1.05rem;
-  color: var(--ink-soft);
+  color: var(--blue-700);
 }
 .process__photo {
-  aspect-ratio: 16 / 11;
-  border-left: 1px solid var(--ink);
+  justify-self: end;
+  width: min(100%, 440px);
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px var(--r-md) var(--r-md);
+  rotate: 3deg;
+  box-shadow: var(--shadow-soft);
 }
 
 /* Stage: default is a static list; .is-animated turns it into the pinned circle. */
 .process__stage {
   position: relative;
-  background: var(--blue);
   overflow: hidden;
   padding: clamp(40px, 8vh, 96px) var(--gutter);
 }
@@ -67,7 +79,7 @@
 }
 
 .process.is-animated .process__stage {
-  height: calc(100svh - var(--bar-h) - var(--label-h));
+  height: 100svh;
   min-height: 520px;
   padding: 0;
   display: grid;
@@ -167,8 +179,8 @@
     grid-template-columns: 1fr;
   }
   .process__photo {
-    border-left: 0;
-    border-top: 1px solid var(--ink);
+    justify-self: center;
+    width: min(80%, 360px);
   }
   .process.is-animated .process__steps {
     width: 62%;
