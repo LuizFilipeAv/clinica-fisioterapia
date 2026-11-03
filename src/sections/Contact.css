@@ -1,116 +1,119 @@
-.contact__head {
-  padding: clamp(48px, 8vw, 120px) var(--gutter) clamp(32px, 5vw, 72px);
+.contact {
+  background: var(--blue-900);
+  color: var(--white);
+  padding: clamp(40px, 7vw, 96px) var(--gutter) calc(var(--r-lg) + clamp(40px, 6vw, 80px));
 }
+
 .contact__title {
-  font-size: clamp(3.5rem, 10vw, 9rem);
-  max-width: 12ch;
+  font-size: clamp(3rem, 8vw, 7rem);
+  color: var(--white);
 }
 
 .contact__media {
   position: relative;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
+  margin-top: clamp(28px, 4vw, 56px);
+  aspect-ratio: 4 / 5;
+  border-radius: var(--r-lg);
   overflow: hidden;
+  background: var(--blue-700);
 }
-.contact__image {
-  aspect-ratio: 4 / 3;
+.contact__media .contact__image {
+  position: absolute;
+  inset: 0;
 }
 .contact__marquee {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
+  padding-bottom: 0.2rem;
   color: var(--white);
-  line-height: 0.9;
-  padding-bottom: 0.05em;
+}
+.contact__marquee .marquee__track {
+  font-size: clamp(4rem, 12vw, 10rem);
+}
+@media (min-width: 768px) {
+  .contact__media {
+    aspect-ratio: 16 / 9;
+  }
 }
 
 .contact__info {
-  background: var(--blue-soft);
   display: grid;
   grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 20px;
 }
+@media (min-width: 640px) {
+  .contact__info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1100px) {
+  .contact__info {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .contact__cell {
-  padding: clamp(20px, 2.5vw, 32px) var(--gutter);
-  border-bottom: 1px solid var(--ink);
-  font-size: 0.9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  padding: clamp(20px, 2.5vw, 28px);
+  background: rgb(255 255 255 / 0.06);
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: var(--r-md);
   overflow-wrap: anywhere;
 }
 .contact__label {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  line-height: 1;
   margin-bottom: 12px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue-200);
 }
 .contact__hours {
   list-style: none;
 }
 .contact__cell a {
-  transition: color var(--dur-quick) var(--ease-out);
+  color: var(--white);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var(--dur-standard) var(--ease-out);
 }
 .contact__cell a:hover {
-  color: var(--gold-ink);
+  text-decoration-color: var(--gold);
 }
 
 .contact__links {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-.contact__link {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
   display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: clamp(28px, 4vw, 48px);
+}
+.contact__cta,
+.contact__outline {
+  padding: 1.1em 2.2em;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+}
+.contact__outline {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: clamp(28px, 4vw, 56px) var(--gutter);
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.85rem;
+  border: 1.5px solid var(--white);
+  border-radius: var(--r-pill);
+  color: var(--white);
   font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color var(--dur-standard) var(--ease-out),
+    color var(--dur-standard) var(--ease-out);
 }
-.contact__link + .contact__link {
-  border-top: 1px solid var(--ink);
+.contact__outline:hover {
+  background: var(--white);
+  color: var(--blue-900);
 }
-.contact__link::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dur-slow) var(--ease-out);
-}
-.contact__link:hover::before {
-  transform: scaleX(1);
-}
-
-@media (min-width: 900px) {
-  .contact__image {
-    aspect-ratio: 16 / 9;
-  }
-  .contact__info {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .contact__cell {
-    border-bottom: 0;
-    border-right: 1px solid var(--ink);
-  }
-  .contact__cell:last-child {
-    border-right: 0;
-  }
-  .contact__links {
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid var(--ink);
-  }
-  .contact__link + .contact__link {
-    border-top: 0;
-    border-left: 1px solid var(--ink);
+@media (max-width: 479px) {
+  .contact__links > * {
+    flex: 1 1 100%;
+    justify-content: center;
   }
 }
