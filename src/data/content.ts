@@ -90,18 +90,26 @@ export const treatments = {
     {
       title: 'Fisioterapia ortopédica',
       text: 'Exercícios terapêuticos, recursos manuais e eletrotermofototerapia para recuperar força e amplitude.',
+      image: sala,
+      imageAlt: 'Sala de atendimento com maca e espaldar de madeira',
     },
     {
       title: 'Osteopatia',
       text: 'Técnicas manuais suaves que liberam articulações, músculos e vísceras para o corpo voltar a funcionar em conjunto.',
+      image: avaliacao,
+      imageAlt: 'Fisioterapeuta explicando um modelo de coluna vertebral a um paciente',
     },
     {
       title: 'Terapia manual',
       text: 'Mobilizações e liberação miofascial para aliviar a dor e destravar movimentos limitados.',
+      image: maos,
+      imageAlt: 'Mãos de fisioterapeuta aplicando terapia manual no ombro de um paciente',
     },
     {
       title: 'Pilates clínico',
       text: 'Fortalecimento e controle motor em aparelhos, com turmas de até três pessoas e acompanhamento do fisioterapeuta.',
+      image: ginasio,
+      imageAlt: 'Estúdio de pilates com aparelhos reformer',
     },
   ],
 }
